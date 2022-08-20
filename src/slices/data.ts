@@ -7,6 +7,8 @@ const initialState = {
   pokemons: []
 }
 
+let pokemonsCopy = []
+
 export const fetchPokemonsWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
   async (cancelToken: CancelTokenSource, { dispatch }) => {
@@ -39,6 +41,7 @@ export const dataSlice = createSlice({
   reducers: {
     setPokemons: (state, action) => {
       state.pokemons = action.payload
+      pokemonsCopy = action.payload
     },
     setFavorite: (state:any, action) => {
       const pokemonIndex = state.pokemons.findIndex((pk:any) => pk.id === action.payload)
@@ -47,10 +50,18 @@ export const dataSlice = createSlice({
         const isFavorite = state.pokemons[pokemonIndex]?.favorite
         state.pokemons[pokemonIndex].favorite = !isFavorite;
       }
+    },
+    setFilter: (state,action) => {
+      if(action.payload.length > 0) {
+        const pokemonFiltered = state.pokemons.filter((pokemon:any) => pokemon.name.includes(action.payload))
+        state.pokemons = pokemonFiltered;
+      } else {
+        state.pokemons = pokemonsCopy;
+      }
     }
   }
 })
 
-export const { setPokemons, setFavorite } = dataSlice.actions;
+export const { setPokemons, setFavorite, setFilter } = dataSlice.actions;
 
 export default dataSlice.reducer;
