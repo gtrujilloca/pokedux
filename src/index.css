@@ -1,0 +1,32 @@
+@import "antd/dist/antd.css";
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  --color: #000;
+  --bg: #ffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: #ffff;
+    --bg: #fffffff5;
+  }
+}
