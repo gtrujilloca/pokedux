@@ -5,10 +5,26 @@
   text-align: center;
 }
 
+.logo-container {
+  width: 40%;
+  margin: 0 auto;
+}
+
 .logo {
   margin-bottom: 3rem;
 }
 
 .searcher {
   margin-bottom: 10px;
+}
+
+@media screen and (min-width: 700px) {
+  .logo-container {
+    width: 20%;
+  }
+
+  .search {
+    max-width: 50% !important;
+    margin: 0 auto;
+  }
 }

@@ -36,12 +36,12 @@ function App() {
 
   return (
     <div className="App">
-      <Col span={4} offset={10}>
+      <Col className='logo-container'>
         <figure className='logo'>
           <img src={logo} alt="logo" />
         </figure>
       </Col>
-      <Col span={8} offset={8}>
+      <Col className='search'>
         <Search />
       </Col>
       {
