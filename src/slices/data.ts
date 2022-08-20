@@ -1,13 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { CancelTokenSource } from 'axios';
 import { getRequestAPI } from '../api/index';
+import { IPokemon } from './IPokemon';
 import { setLoading } from './ui';
 
-const initialState = {
+interface State {
+  pokemons: IPokemon[]
+}
+
+const initialState: State = {
   pokemons: []
 }
 
-let pokemonsCopy = []
+let pokemonsCopy: IPokemon[] = []
 
 export const fetchPokemonsWithDetails = createAsyncThunk(
   'data/fetchPokemonsWithDetails',
@@ -53,7 +58,7 @@ export const dataSlice = createSlice({
     },
     setFilter: (state,action) => {
       if(action.payload.length > 0) {
-        const pokemonFiltered = state.pokemons.filter((pokemon:any) => pokemon.name.includes(action.payload))
+        const pokemonFiltered = pokemonsCopy.filter((pokemon:any) => pokemon.name.includes(action.payload))
         state.pokemons = pokemonFiltered;
       } else {
         state.pokemons = pokemonsCopy;
